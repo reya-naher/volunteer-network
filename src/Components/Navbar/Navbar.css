@@ -1,0 +1,18 @@
+.navbar-expand .navbar-nav .nav-link {
+  margin-left: 30px;
+}
+.MuiAppBar-colorPrimary{
+  background-color: transparent!important;
+}
+.MuiPaper-elevation4{
+  box-shadow: none!important;
+}
+.MuiLink-underlineHover:hover{
+  text-decoration: none!important;
+}
+.MuiIconButton-root{
+  border-radius: none;
+}
+a{
+  text-decoration: none;
+}

@@ -1,0 +1,22 @@
+.firstBackImg{
+  background-image: url("https://i.imgur.com/kBL3nrr.jpg");
+  background-size: cover;
+  height:500px;
+  width:100%;
+}
+.secondBackImg{
+  position: absolute;
+  top:400px;
+  bottom:0px;
+  background-size: cover;
+  height:1000px;
+  width:100%;
+  background-color: rgb(192, 185, 185);
+  opacity: .5;
+  z-index: -1;
+}
+.opacity-set{
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity:1;
+  height:100vh;
+}

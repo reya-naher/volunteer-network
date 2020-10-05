@@ -4,7 +4,7 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../FirebaseConfig/firebaseConfig';
 import { UserContext } from '../../App'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation,Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
@@ -37,7 +37,9 @@ const Login = () => {
   return (
     <div className="container">
       <div className="imgDiv">
-        <img src="https://i.imgur.com/eqzzoJJ.png" height="50" width="150" alt="" />
+        <Link to="/">
+          <img src="https://i.imgur.com/eqzzoJJ.png" height="50" width="150" alt="" />
+          </Link>
       </div>
       <div className="loginDiv">
         <h2><b>Login With</b></h2>

@@ -15,7 +15,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const volunteerDetails = data 
-    fetch('http://localhost:5000/addVolunteerTasks', {
+    fetch('https://powerful-shelf-03829.herokuapp.com/addVolunteerTasks', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'

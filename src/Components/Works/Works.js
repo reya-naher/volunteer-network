@@ -29,7 +29,7 @@ const Works = () => {
   const classes = useStyles();
   const [work, setWork] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/works')
+    fetch('https://powerful-shelf-03829.herokuapp.com/works')
       .then(res => res.json())
       .then(data => setWork(data))
   }, [])

@@ -11,7 +11,7 @@ const VolunteerList = () => {
 
   const [task, setTask] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/activitieslist')
+    fetch('https://powerful-shelf-03829.herokuapp.com/activitieslist')
       .then(res => res.json())
       .then(data => setTask(data))
   }, [])
@@ -21,7 +21,7 @@ const VolunteerList = () => {
   }
 
   const deleteTask = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://powerful-shelf-03829.herokuapp.com/delete/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

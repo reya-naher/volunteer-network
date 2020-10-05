@@ -21,13 +21,13 @@ const EventTasks = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
   useEffect(() => {
-    fetch('http://localhost:5000/activities?email=' + loggedInUser.email)
+    fetch('https://powerful-shelf-03829.herokuapp.com/activities?email=' + loggedInUser.email)
       .then(res => res.json())
       .then(data => setTask(data))
   }, [])
 
   const deleteTask = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://powerful-shelf-03829.herokuapp.com/delete/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())

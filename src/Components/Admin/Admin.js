@@ -8,7 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 const Admin = () => {
   const handleWorks = () => {
     const tasks = {}
-    fetch('http://localhost:5000/addWorks', {
+    fetch('https://powerful-shelf-03829.herokuapp.com/addWorks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

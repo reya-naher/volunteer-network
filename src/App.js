@@ -27,9 +27,6 @@ function App() {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route path="/admin">
-         <Admin></Admin>
-          </Route>
           <Route path="/tasks">
           <EventTasks></EventTasks>
           </Route>
@@ -45,6 +42,9 @@ function App() {
           <PrivateRouteAdmin path="/admin">
             <Admin></Admin>
           </PrivateRouteAdmin>
+          <Route path="/admin">
+         <Admin></Admin>
+          </Route>
           <Route path="*">
             <NotFound></NotFound>
           </Route>

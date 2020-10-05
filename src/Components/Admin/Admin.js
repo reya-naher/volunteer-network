@@ -1,6 +1,5 @@
 import React from 'react';
 import './Admin.css'
-import data from '../../FakeData/FakeData';
 import { Button, Container, Grid } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import PeopleIcon from '@material-ui/icons/People';
@@ -8,12 +7,13 @@ import AddIcon from '@material-ui/icons/Add';
 
 const Admin = () => {
   const handleWorks = () => {
+    const tasks = {}
     fetch('http://localhost:5000/addWorks', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(tasks)
     })
   }
 

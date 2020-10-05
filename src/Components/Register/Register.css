@@ -4,11 +4,31 @@
 .ship-form input {
   display: block;
   margin-top : 30px;
-  padding: 5px;
+  padding: 10px;
   border: 1px solid gray;
   border-radius: 5px;
   width: 300px;
 }
 .error{
   color:red;
+}
+.MuiInputAdornment-positionEnd{
+  margin-left: -40px!important;
+  margin-top: 40px!important;
+}
+.container{
+  text-align:center;
+}
+.registerDiv{
+  background-color: white;
+  height: 480px;
+  width: 480px;
+  margin:auto;
+  border:1px solid gray;
+}
+.imgDiv{
+  margin: 50px;
+}
+.registerBtn{
+  width:100%;
 }

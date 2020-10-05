@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { UserContext } from '../../App';
 
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRouteAdmin = ({ children, ...rest }) => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
   return (
     <Route
@@ -23,4 +23,4 @@ const PrivateRoute = ({ children, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+export default PrivateRouteAdmin;

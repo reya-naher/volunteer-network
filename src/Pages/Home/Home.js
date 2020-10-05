@@ -1,21 +1,16 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import Works from '../../Components/Works/Works';
-import './Home.css'
+import './Home.css';
+
 const Home = () => {
   return (
-    <>
-      <div className="firstBackImg">
-     
-        <div className="opacity-set">
+    <div className="firstBackImg">
+      <div className="opacity-set">
         <Navbar></Navbar>
-            <Works></Works>
-      <div className="secondBackImg">
-
-            </div>
-          </div>
-        </div>
-    </>
+        <Works></Works>
+      </div>
+    </div>
   );
 };
 

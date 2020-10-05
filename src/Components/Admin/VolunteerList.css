@@ -1,0 +1,29 @@
+.volunteers{
+  border-collapse: collapse;
+  width: 100%;
+
+}
+.volunteers td, .volunteers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.volunteers tr:nth-child(even){background-color: #f2f2f2;}
+
+.volunteers tr:hover {background-color: #ddd;}
+
+.volunteers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #F5F6FA;
+  color: gray;
+}
+.imgAdmin{
+  margin-bottom: 30px;
+}
+.headLine{
+  margin-top: 50px;;
+}
+.delete{
+  color :#FF444A;
+}

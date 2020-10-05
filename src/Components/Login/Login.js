@@ -1,25 +1,14 @@
 import React, { useContext } from 'react';
+import './Login.css'
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../FirebaseConfig/firebaseConfig';
 import { UserContext } from '../../App'
 import { useHistory, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
-export const handleSignOut = () => {
-  return firebase.auth().signOut()
-    .then(res => {
-    console.log(res)
-    const signedOutUser = {
-      name: '',
-      email: ''
-    }
-    return signedOutUser;
-  }).catch(err => {
-    console.log(err)
-  });
-}
-
-const Login = () => { 
+const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
   const history = useHistory();
   const location = useLocation();
@@ -39,29 +28,28 @@ const Login = () => {
           email: email
         }
         setLoggedInUser(signedInUser);
-        // storeAuthToken();
         history.replace(from);
-    }).catch(error => {
-      console.log(error)
-    });   
+      }).catch(error => {
+        console.log(error)
+      });
   }
 
-  
-  // const storeAuthToken = () => {
-  //   firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
-  //     .then(function (idToken) {
-  //       sessionStorage.setItem('token',idToken)
-  //   }).catch(function(error) {
-  //     // Handle error
-  //   });
-  // }
-
-    return (
-      <div>
-        <br></br>
-            <button onClick={googleSignIn}>Google Sign In</button>
-        </div>
-    );
+  return (
+    <div className="container">
+      <div className="imgDiv">
+        <img src="https://i.imgur.com/eqzzoJJ.png" height="50" width="150" alt="" />
+      </div>
+      <div className="loginDiv">
+        <h2><b>Login With</b></h2>
+        <button
+          className="googleSign"
+          onClick={googleSignIn}>
+          <FontAwesomeIcon icon={faGoogle} />
+             Continue with Google
+             </button>
+      </div>
+    </div>
+  );
 };
 
 export default Login;

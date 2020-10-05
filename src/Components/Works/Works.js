@@ -1,7 +1,6 @@
-import React from 'react';
-import data from '../../FakeData/FakeData';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Card,Grid} from '@material-ui/core';
+import { Card, Grid } from '@material-ui/core';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -19,15 +18,21 @@ const useStyles = makeStyles({
   },
   btnCustom: {
     width: "100%",
-    fontWeight:"bold"
+    fontWeight: "bold"
   },
   image: {
-    objectFit:"fit"
+    objectFit: "fit"
   }
 });
 
 const Works = () => {
   const classes = useStyles();
+  const [work, setWork] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:5000/works')
+      .then(res => res.json())
+      .then(data => setWork(data))
+  }, [])
 
   const history = useHistory()
   const handleWork = (work) => {
@@ -36,28 +41,32 @@ const Works = () => {
 
   return (
     <>
-
       <SearchButton></SearchButton>
-    <Grid item xs={12} container spacing={2} 
-        justify = "center">
-      {
-        data.map(item =>
-          <Card className={classes.root}>
-     <CardMedia className={classes.image}
-          component="img"
-              alt="Contemplative Reptile"
-              width="100%"
-          height="140"
-          image={item.image}
-          title="Contemplative Reptile"
-            />
-            <CardActions>
-              <Button onClick={()=>handleWork(item.name)} className={classes.btnCustom}>{item.name}</Button>
-               </CardActions>
-        </Card>)
-      }
+      <Grid item xs={12} container spacing={2}
+        justify="center">
+        {
+          work.map((item, index) =>
+            <Card key={index} className={classes.root}>
+              <CardMedia className={classes.image}
+                component="img"
+                alt="card image"
+                width="100%"
+                height="140"
+                image={item.image}
+                title="card image"
+              />
+              <CardActions>
+                <Button
+                  onClick={() => handleWork(item.name)}
+                  className={classes.btnCustom}>
+                  {item.name}
+                </Button>
+              </CardActions>
+            </Card>
+          )
+        }
       </Grid>
-      </>
+    </>
   );
 };
 

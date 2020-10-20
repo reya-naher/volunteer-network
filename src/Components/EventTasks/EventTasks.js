@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardContent, Grid } from '@material-ui/core';
+import { Button, Card, CardContent, CardMedia, Grid } from '@material-ui/core';
 import Navbar from '../Navbar/Navbar';
 import { UserContext } from '../../App';
 
@@ -12,13 +12,17 @@ const useStyles = makeStyles({
     textAlign: "center",
     backgroundColor: "#309e67",
     boxShadow: "3px 4px 10px"
+  },
+  image: {
+    objectFit: "fit"
   }
 });
 
 const EventTasks = () => {
   const classes = useStyles();
   const [task, setTask] = useState([])
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+  const { loggedInUser, item } = useContext(UserContext)
+  console.log("task",task)
 
   useEffect(() => {
     fetch('https://powerful-shelf-03829.herokuapp.com/activities?email=' + loggedInUser.email)
@@ -27,13 +31,14 @@ const EventTasks = () => {
   }, [])
 
   const deleteTask = (id) => {
+    console.log(id)
     fetch(`https://powerful-shelf-03829.herokuapp.com/delete/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
       .then(result => {
         if (result) {
-          console.log(result)
+          console.log("result",result)
           const filterData = task.filter(item => item._id !== id)
           setTask(filterData)
         }
@@ -46,13 +51,20 @@ const EventTasks = () => {
       <Grid item xs={12} container spacing={2}
         justify="center">
         {
-          task.map((item, index) =>
+          task.map((taskItem, index) =>
             <Card key={index} className={classes.root}>
+            <CardMedia className={classes.image}
+                component="img"
+                alt="card image"
+                width="100%"
+                height="140"
+                image={taskItem.image}
+                title="card image"
+              />
               <CardContent>
-                <h2>{item.name}</h2>
-                <h2>{item.work}</h2>
-                <h2>{item.startWork}</h2>
-                <Button className="cancelBtn" style={{ backgroundColor: "#E3E3E3" }} variant="contained" onClick={() => deleteTask(item._id)}>Cancel</Button>
+                <h2>{taskItem.work}</h2>
+                <h2>{taskItem.startWork}</h2>
+                <Button className="cancelBtn" style={{ backgroundColor: "#E3E3E3" }} variant="contained" onClick={() => deleteTask(taskItem._id)}>Cancel</Button>
               </CardContent>
             </Card>)
         }

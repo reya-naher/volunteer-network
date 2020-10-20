@@ -8,19 +8,21 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
 const Register = () => {
-  const {work} = useParams()
   const { register, handleSubmit, errors } = useForm();
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const { loggedInUser, item } = useContext(UserContext);
+  console.log(item)
   const history = useHistory()
 
   const onSubmit = (data) => {
+    const newData = {...data,...item}
     const volunteerDetails = data 
+    console.log(newData)
     fetch('https://powerful-shelf-03829.herokuapp.com/addVolunteerTasks', {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
       },
-      body:JSON.stringify(volunteerDetails)
+      body:JSON.stringify(newData)
     })
       .then(res => res.json())
       .then(data => {
@@ -82,9 +84,10 @@ const Register = () => {
 
           <input
             name="work"
-            defaultValue={work}
+            defaultValue={item.name}
             ref={register({ required: true })}
-            placeholder={work} />
+            placeholder={item.name}
+          />
           <br />
           
           <Button
@@ -93,7 +96,7 @@ const Register = () => {
             color="primary"
             type="submit">
             register
-            </Button>
+          </Button>
           
         </form>      
       </div>

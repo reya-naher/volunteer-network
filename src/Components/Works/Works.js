@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, Grid } from '@material-ui/core';
 import CardActions from '@material-ui/core/CardActions';
@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import SearchButton from '../SearchButton/SearchButton';
 import { useHistory } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const useStyles = makeStyles({
   root: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
 
 const Works = () => {
   const classes = useStyles();
+  const {setItem} = useContext(UserContext)
   const [work, setWork] = useState([])
   useEffect(() => {
     fetch('https://powerful-shelf-03829.herokuapp.com/works')
@@ -36,7 +38,9 @@ const Works = () => {
 
   const history = useHistory()
   const handleWork = (work) => {
-    history.push(`/register/${work}`);
+    setItem(work)
+    history.push(`/register`);
+    
   }
 
   return (
@@ -57,7 +61,7 @@ const Works = () => {
               />
               <CardActions>
                 <Button
-                  onClick={() => handleWork(item.name)}
+                  onClick={() => handleWork(item)}
                   className={classes.btnCustom}>
                   {item.name}
                 </Button>

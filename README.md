@@ -5,42 +5,40 @@
 
 ## Features
 
+* A single page responsive  application with multiple options of volunteer activities.
 
+* A user can register with google account which is developed using firebase authentication.
 
-*A single page responsive  application with multiple options of volunteer activities.
+* Without register user can not select any task.
 
-*A user can register with google account which is developed using firebase authentication.
+* A registered volunteer can select multiple activities without fee.
 
-*Without register user can not select any task.
+* User can also delete activity.
 
-*A registered volunteer can select multiple activities without fee.
+* There is a Admin panel where a admin can add a event.
 
-*User can also delete activity.
+* Admin can also see all users information in admin dashboard.
 
-*There is a Admin panel where a admin can add a event.
-
-*Admin can also see all users information in admin dashboard.
-
-*Admin can delete any user.
+* Admin can delete any user.
 
 
 ## Technology
 
 
 
-*React.js
+* React.js
 
-*Material UI
+* Material UI
 
-*React-Router
+* React-Router
 
-*Firebase
+* Firebase
 
-*Node.js
+* Node.js
 
-*Express.js
+* Express.js
 
-*MongoDB
+* MongoDB
 
-*Heroku
+* Heroku
 

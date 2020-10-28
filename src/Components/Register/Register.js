@@ -14,7 +14,6 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const newData = { ...data, ...item }
-    console.log(newData)
     fetch('https://powerful-shelf-03829.herokuapp.com/addVolunteerTasks', {
       method: 'POST',
       headers: {

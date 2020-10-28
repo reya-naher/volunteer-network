@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import './Login.css';
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from '../FirebaseConfig/firebaseConfig';
+import firebaseConfig from '../FirebaseConfig/FirebaseConfig';
 import { UserContext } from '../../App';
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

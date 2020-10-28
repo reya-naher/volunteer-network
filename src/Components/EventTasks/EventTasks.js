@@ -29,18 +29,21 @@ const EventTasks = () => {
       .then(data => setTask(data))
   }, [])
 
-  const deleteTask = (id) => {
-    console.log(id)
-    fetch(`https://powerful-shelf-03829.herokuapp.com/delete/${id}`, {
+  const deleteTask = (Id) => {
+    console.log(Id)
+    fetch(`https://powerful-shelf-03829.herokuapp.com/delete/${Id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
       .then(result => {
         if (result) {
           console.log("result", result)
-          const filterData = task.filter(item => item._id !== id)
+          const filterData = task.filter(item => item._id !== Id)
           setTask(filterData)
         }
+      })
+      .catch(error => {
+        console.log(error)
       })
   }
 
@@ -63,13 +66,7 @@ const EventTasks = () => {
               <CardContent>
                 <h2>{taskItem.work}</h2>
                 <h2>{taskItem.startWork}</h2>
-                <Button
-                  className="cancelBtn"
-                  style={{ backgroundColor: "#E3E3E3" }}
-                  variant="contained"
-                  onClick={() => deleteTask(taskItem._id)}>
-                  Cancel
-                </Button>
+                <Button className="cancelBtn" style={{ backgroundColor: "#E3E3E3" }} variant="contained" onClick={() => deleteTask(taskItem._id)}>Cancel</Button>
               </CardContent>
             </Card>)
         }

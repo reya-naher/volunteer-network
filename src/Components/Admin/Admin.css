@@ -1,24 +1,55 @@
 .eventDiv{
   background-color: white;
+  padding: 30px;
 }
 .headLine{
   margin-top: 50px;;
 }
 .form-design{
-  padding:20px;
+  padding: 40px 20px;
   width: 100%;
-height: 200px;
+  height: 150px;
 }
-.input-text {
+
+.imgAdmin{
+  margin-bottom: 30px;
+}
+
+.input-admin,.input-date,.input-description{
   border: none;
   border-bottom: 2px solid black;  
   margin: 10px;
-  width: 50%;
+  width: 40%; 
   padding: 10px;
 }
-.banner{
-  margin-bottom: 5px;
+.order-fil-upload{
+  display:none;
 }
-.imgAdmin{
-  margin-bottom: 30px;
+.style-file-btn{
+  width:30%;
+  border: 1px solid #009444;
+  display: inline;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #DEFFED;
+}
+.icon-label{
+  margin-right: 10px;
+}
+.admin-btn{
+  padding: 10px;
+  background-color: #257325;
+  border: none;
+  margin: 25px;
+  float: right;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .icon-label{
+    margin:auto;
+  }
+  .input-date,.event,.description,.input-description{
+    display: none;
+  }
 }

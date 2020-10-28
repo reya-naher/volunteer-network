@@ -32,3 +32,17 @@
 .registerBtn{
   width:100%;
 }
+
+@media (max-width: 640px)  { 
+  .ship-form{
+    margin: 10px 20px;
+    padding-bottom: 10px;
+  }
+  .registerDiv{
+    width: 320px;
+    height: 520px;
+  }
+  .ship-form input{
+    width: 220px;
+  }
+ }

@@ -21,8 +21,7 @@ const useStyles = makeStyles({
 const EventTasks = () => {
   const classes = useStyles();
   const [task, setTask] = useState([])
-  const { loggedInUser, item } = useContext(UserContext)
-  console.log("task",task)
+  const { loggedInUser } = useContext(UserContext)
 
   useEffect(() => {
     fetch('https://powerful-shelf-03829.herokuapp.com/activities?email=' + loggedInUser.email)
@@ -38,7 +37,7 @@ const EventTasks = () => {
       .then(res => res.json())
       .then(result => {
         if (result) {
-          console.log("result",result)
+          console.log("result", result)
           const filterData = task.filter(item => item._id !== id)
           setTask(filterData)
         }
@@ -53,7 +52,7 @@ const EventTasks = () => {
         {
           task.map((taskItem, index) =>
             <Card key={index} className={classes.root}>
-            <CardMedia className={classes.image}
+              <CardMedia className={classes.image}
                 component="img"
                 alt="card image"
                 width="100%"
@@ -64,7 +63,13 @@ const EventTasks = () => {
               <CardContent>
                 <h2>{taskItem.work}</h2>
                 <h2>{taskItem.startWork}</h2>
-                <Button className="cancelBtn" style={{ backgroundColor: "#E3E3E3" }} variant="contained" onClick={() => deleteTask(taskItem._id)}>Cancel</Button>
+                <Button
+                  className="cancelBtn"
+                  style={{ backgroundColor: "#E3E3E3" }}
+                  variant="contained"
+                  onClick={() => deleteTask(taskItem._id)}>
+                  Cancel
+                </Button>
               </CardContent>
             </Card>)
         }

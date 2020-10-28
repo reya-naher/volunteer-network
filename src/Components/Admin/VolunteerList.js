@@ -37,7 +37,7 @@ const VolunteerList = () => {
   return (
     <Container>
       <Grid container spacing={3}>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={3}>
           <Link to="/">
             <img
               className="imgAdmin"
@@ -56,27 +56,32 @@ const VolunteerList = () => {
             Add Event
             </Button>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} md={9}>
           <h1 className="headLine"> Add Event</h1>
           <table className="volunteers">
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Registration Date</th>
-              <th>Volunteer List</th>
-              <th>Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+                <th>Volunteer List</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
             {
               task.map((item, index) =>
-                <tr>
-                  <td>{item.name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.startWork}</td>
-                  <td>{item.work}</td>
-                  <td onClick={() => deleteTask(item._id)}>
-                    <DeleteIcon className="delete" />
-                  </td>
-                </tr>
+                <tbody key={index}>
+                  <tr>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.startWork}</td>
+                    <td>{item.work}</td>
+                    <td onClick={() => deleteTask(item._id)}>
+                      <DeleteIcon className="delete" />
+                    </td>
+                  </tr>
+                </tbody>
               )}
           </table>
         </Grid>

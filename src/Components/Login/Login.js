@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import './Login.css'
+import './Login.css';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from '../FirebaseConfig/firebaseConfig';
-import { UserContext } from '../../App'
-import { useHistory, useLocation,Link } from 'react-router-dom';
+import { UserContext } from '../../App';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
-  const {loggedInUser, setLoggedInUser} = useContext(UserContext)
+  const { setLoggedInUser } = useContext(UserContext)
   const history = useHistory();
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
@@ -38,8 +38,11 @@ const Login = () => {
     <div className="container">
       <div className="imgDiv">
         <Link to="/">
-          <img src="https://i.imgur.com/eqzzoJJ.png" height="50" width="150" alt="" />
-          </Link>
+          <img src="https://i.imgur.com/eqzzoJJ.png"
+            height="50"
+            width="150"
+            alt="" />
+        </Link>
       </div>
       <div className="loginDiv">
         <h2><b>Login With</b></h2>
@@ -48,7 +51,7 @@ const Login = () => {
           onClick={googleSignIn}>
           <FontAwesomeIcon icon={faGoogle} />
              Continue with Google
-             </button>
+        </button>
       </div>
     </div>
   );

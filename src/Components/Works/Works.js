@@ -14,7 +14,6 @@ const useStyles = makeStyles({
     margin: "1em",
     boxSizing: "border-box",
     textAlign: "center",
-    backgroundColor: "#309e67",
     boxShadow: "3px 4px 10px"
   },
   btnCustom: {
@@ -27,6 +26,10 @@ const useStyles = makeStyles({
 });
 
 const Works = () => {
+ const getRandomColor = () => {
+    let colorValues = ["SlateGrey", "Peru", "Teal","SeaGreen"];
+    return colorValues[Math.floor(Math.random() * colorValues.length)];
+  }
   const classes = useStyles();
   const {setItem} = useContext(UserContext)
   const [work, setWork] = useState([])
@@ -50,13 +53,15 @@ const Works = () => {
         justify="center">
         {
           work.map((item, index) =>
-            <Card key={index} className={classes.root}>
+            <Card key={index} style={{   backgroundColor: `${getRandomColor()}`}} className={classes.root}>
               <CardMedia className={classes.image}
                 component="img"
                 alt="card image"
                 width="100%"
                 height="140"
-                image={item.image}
+                image={
+                  item.image.img ? `data:image/png;base64,${item.image.img}` : item.image
+                }
                 title="card image"
               />
               <CardActions>

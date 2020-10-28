@@ -1,20 +1,40 @@
-import React from 'react';
-import './Admin.css'
+import React, { useState } from 'react';
+import './Admin.css';
 import { Button, Container, Grid } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
 import PeopleIcon from '@material-ui/icons/People';
 import AddIcon from '@material-ui/icons/Add';
 
 const Admin = () => {
-  const handleWorks = () => {
-    const tasks = {}
+  const [info, setInfo] = useState({})
+  const [file, setFile] = useState(null);
+
+  const handleBlur = e => {
+    const newInfo = { ...info };
+    newInfo[e.target.name] = e.target.value;
+    setInfo(newInfo)
+  }
+  const handleFileChange = (e) => {
+    const newFile = e.target.files[0];
+    setFile(newFile)
+  }
+  const handleSubmit = (e) => {
+    e.target.reset();
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('name', info.name)
     fetch('https://powerful-shelf-03829.herokuapp.com/addWorks', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(tasks)
+      body: formData
     })
+      .then(response => response.json())
+      .then(data => {
+        alert("New event added")
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 
   const history = useHistory()
@@ -25,7 +45,7 @@ const Admin = () => {
   return (
     <Container>
       <Grid container spacing={3}>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={3}>
           <Link to="/">
             <img
               className="imgAdmin"
@@ -44,51 +64,79 @@ const Admin = () => {
             Add Event
             </Button>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} md={9}>
           <h1 className="headLine"> Add Event</h1>
           <div className="eventDiv">
 
-            <form onSubmit={handleWorks} className="form-design">
+            <form className="form-design" onSubmit={handleSubmit}>
+              <label
+                htmlFor="name">
+                <b>Event Title</b>
+              </label>
+              <br />
+
               <input
+                onBlur={handleBlur}
                 type="text"
                 name="name"
-                className="input-text"
-                placeholder="Event-Title" required />
+                className="input-admin"
+                id="name"
+                placeholder="Service Name" />
+
               <label
-                htmlFor="Banner"
-                className="banner">
+                className="event"
+                htmlFor="date">
                 <b>Event Date:</b>
               </label>
+
               <input
                 type="date"
-                id="start"
-                name="registrationDate"
-                defaultValue={new Date()}
-                min="2020-01-01"
-                max="2030-12-31" required />
-              <textarea
-                rows="4"
-                cols="50"
-                type="text"
-                name="description"
-                className="input-text"
-                placeholder="Description" required />
-              <label
-                htmlFor="Banner"
-                className="banner">
-                <b>Banner:</b>
-              </label>
-              <input
-                type="file"
-                name="image" required />
+                id="date"
+                className="input-date"
+                name="date"
+                defaultValue={new Date()} />
               <br />
-              <Button
-                variant="contained"
-                color="primary"
-                className="submit-btn"
-                type="submit">
+              <label
+                htmlFor="description"
+                className="description">
+                <b>Description</b>
+              </label>
+              <br />
+
+              <textarea
+                type="text"
+                className="input-description"
+                placeholder="Description"
+                name="description"
+                id="description"
+                cols="50"
+                rows="3">
+              </textarea>
+
+              <span className="icon-label">
+                <b>icon</b>
+              </span>
+              <label
+                htmlFor="file upload"
+                className="style-file-btn">
+                <PeopleIcon />
+              Upload Icon
+              </label>
+
+              <input
+                onChange={handleFileChange}
+                className="order-fil-upload"
+                type="file"
+                name="file upload"
+                id="file upload" />
+
+              <br />
+              <button
+                type="submit"
+                className="admin-btn"
+              >
                 Submit
-                </Button>
+                </button>
             </form>
           </div>
         </Grid>
